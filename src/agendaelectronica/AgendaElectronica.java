@@ -6,7 +6,8 @@
 package agendaelectronica;
 
 import GUI.Login;
-
+import Conexion.Conexion;
+import java.sql.Connection;
 /**
  *
  * @author LUZPM1102
@@ -21,8 +22,8 @@ public class AgendaElectronica {
         
        Login l = new Login();
        l.setVisible(true);
-        
-        
+       // Conexion conex = new Conexion();
+       // Connection conn = conex.getConexion();
         
         
     }

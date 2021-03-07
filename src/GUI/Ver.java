@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static Conexion.Utils.actualizarTabla;
 import static Conexion.Utils.queryTablaAll;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +21,7 @@ public class Ver extends javax.swing.JFrame {
      */
     public Ver() {
         initComponents();
-        String [] columnas = {"nombres", "apellidos", "direccion", "telefono", "email"};
+        String [] columnas = {"idContacto", "nombres", "apellidos", "direccion", "telefono", "email"};
         TablaContactos(queryTablaAll("Contactos", columnas));
         btnGuardarNuevo.setVisible(false);
     }
@@ -52,6 +53,8 @@ public class Ver extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btnGuardarNuevo = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtIdContacto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +137,15 @@ public class Ver extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("IdContacto:");
+
+        txtIdContacto.setEditable(false);
+        txtIdContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdContactoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,31 +164,32 @@ public class Ver extends javax.swing.JFrame {
                                 .addGap(46, 46, 46)
                                 .addComponent(btnEliminar)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGuardarNuevo)
-                                .addGap(134, 134, 134))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel2))
+                                .addGap(65, 65, 65)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombres)
                                     .addComponent(txtApellidos)
                                     .addComponent(txtDireccion)
                                     .addComponent(txtTel)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45))))))
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtIdContacto)
+                                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnGuardarNuevo)
+                                .addGap(169, 169, 169))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,16 +203,17 @@ public class Ver extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtIdContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,9 +229,12 @@ public class Ver extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarNuevo)))
-                .addContainerGap())
+                        .addGap(28, 28, 28)
+                        .addComponent(btnGuardarNuevo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,14 +281,26 @@ public class Ver extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         int fila = listaContactos.getSelectedRow();
-        
+        int columnas = listaContactos.getColumnCount();
+        String[] valores = new String[columnas];
+        for (int i = 0; i < columnas; i += 1) {
+            valores[i] = listaContactos.getModel().getValueAt(fila, i).toString();
+        }
+        System.out.println(valores);
         if (fila>=0){
+            txtIdContacto.setText(valores[0]);
             txtNombres.setEditable(true);
+            txtNombres.setText(valores[1]);
             txtApellidos.setEditable(true);
+            txtApellidos.setText(valores[2]);
             txtDireccion.setEditable(true);
+            txtDireccion.setText(valores[3]);
             txtTel.setEditable(true);
+            txtTel.setText(valores[4]);
             txtEmail.setEditable(true);
+            txtEmail.setText(valores[5]);
             btnGuardarNuevo.setVisible(true);
+            System.out.println(fila);
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione Contacto a editar");
         }
@@ -295,7 +324,7 @@ public class Ver extends javax.swing.JFrame {
 
     private void btnGuardarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarNuevoActionPerformed
         // TODO add your handling code here:
-        
+        String idContacto =  txtIdContacto.getText();
         String nombres = txtNombres.getText();
         String apellidos = txtApellidos.getText();
         String direccion = txtDireccion.getText();
@@ -303,11 +332,26 @@ public class Ver extends javax.swing.JFrame {
         String email = txtEmail.getText();
         
         int fila = listaContactos.getSelectedRow();
+        String valores = "nombres='" + nombres + "',apellidos='" + apellidos +
+            "',direccion='" + direccion + "',telefono='" +
+            telefono + "',email='" + email + "'";
+        String id = "idContacto=" + idContacto;
+        actualizarTabla("Contactos", valores, id);
+        
+        listaContactos.setValueAt(nombres, fila, 1);
+        listaContactos.setValueAt(apellidos, fila, 2);
+        listaContactos.setValueAt(direccion, fila, 3);
+        listaContactos.setValueAt(telefono, fila, 4);
+        listaContactos.setValueAt(email, fila, 5);
         
        //aqui codigo para asignar los nuevos datos del contacto existente
        
        
     }//GEN-LAST:event_btnGuardarNuevoActionPerformed
+
+    private void txtIdContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdContactoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdContactoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,11 +416,13 @@ public class Ver extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable listaContactos;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIdContacto;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables

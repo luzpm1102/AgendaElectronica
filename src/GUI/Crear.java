@@ -176,7 +176,7 @@ public class Crear extends javax.swing.JFrame {
                 c.setDirección(direccion);
                 c.setMóvil(telefono);
                 c.setEmail(email);
-                String[] columnas = {"id", "nombres", "apellidos", "direccion", "telefono", "email"};
+                String[] columnas = {"nombres", "apellidos", "direccion", "telefono", "email"};
                 String[] valores = {nombres, apellidos, direccion, telefono, email};
                 try {
                     insertarTabla("Contactos", columnas, valores);

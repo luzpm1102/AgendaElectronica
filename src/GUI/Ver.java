@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static Conexion.Utils.queryTablaAll;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +20,8 @@ public class Ver extends javax.swing.JFrame {
      */
     public Ver() {
         initComponents();
-        TablaContactos();
+        String [] columnas = {"nombres", "apellidos", "direccion", "telefono", "email"};
+        TablaContactos(queryTablaAll("Contactos", columnas));
         btnGuardarNuevo.setVisible(false);
     }
 
@@ -70,7 +72,7 @@ public class Ver extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(listaContactos);
 
-        jButton1.setText("atras");
+        jButton1.setText("Atrás");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -345,12 +347,12 @@ public class Ver extends javax.swing.JFrame {
         });
     }
     DefaultTableModel model;
-    private void TablaContactos(){        
+    private void TablaContactos(DefaultTableModel tablaData){        
         try{
-            DefaultTableModel model = new DefaultTableModel(
+            /* DefaultTableModel model = new DefaultTableModel(
                     null, new String[]{
-                        "Nombres", "Direccion", "Telefono", "Email"}) {};
-            listaContactos.setModel(model);
+                        "Nombres", "Direccion", "Telefono", "Email"}) {}; */
+            listaContactos.setModel(tablaData);
         }catch (Exception e){
     
     JOptionPane.showMessageDialog(null, "error");

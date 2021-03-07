@@ -6,6 +6,7 @@
 package GUI;
 
 import static Conexion.Utils.actualizarTabla;
+import static Conexion.Utils.eliminarTabla;
 import static Conexion.Utils.queryTablaAll;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -257,16 +258,14 @@ public class Ver extends javax.swing.JFrame {
             int R=  JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar este contacto?",  "Confirmación", JOptionPane.YES_NO_OPTION);
             if (R == JOptionPane.YES_OPTION){
                 
-
-
                 //codigo para borrar contacto desde bd
-
+                String id = "idContacto=" + listaContactos.getModel().getValueAt(fila, 0).toString();
+                eliminarTabla("Contactos", id);
+                DefaultTableModel dtm = (DefaultTableModel) listaContactos.getModel(); //TableProducto es el nombre de mi tabla ;)
+                dtm.removeRow(fila);
 
                 //joptionpane de confirmacion de eliminado
                 JOptionPane.showMessageDialog(null, "Contacto borrado satisfactoriamente.");
-            }else{
-
-                JOptionPane.showMessageDialog(null, "Contacto no borrado.");
             }
             
         }else{

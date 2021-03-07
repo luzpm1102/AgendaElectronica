@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static Conexion.Utils.insertarTabla;
 import clases.Contacto;
 import javax.swing.JOptionPane;
 
@@ -175,8 +176,14 @@ public class Crear extends javax.swing.JFrame {
                 c.setDirección(direccion);
                 c.setMóvil(telefono);
                 c.setEmail(email);
-                
-                JOptionPane.showMessageDialog(null, "Contacto " +c.getNombres() +" creado correctamente");
+                String[] columnas = {"id", "nombres", "apellidos", "direccion", "telefono", "email"};
+                String[] valores = {nombres, apellidos, direccion, telefono, email};
+                try {
+                    insertarTabla("Contactos", columnas, valores);
+                    JOptionPane.showMessageDialog(null, "Contacto " +c.getNombres() +" creado correctamente");
+                } catch (Exception e){
+                    System.out.println("Hubo un error Guardando");
+                }
                 
             }
             else{

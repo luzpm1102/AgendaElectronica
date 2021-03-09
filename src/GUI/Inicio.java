@@ -30,6 +30,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        verEventos = new javax.swing.JMenuItem();
+        addEvento = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         verContactos = new javax.swing.JMenuItem();
         addContact = new javax.swing.JMenuItem();
@@ -43,6 +45,29 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setAutoscrolls(true);
 
         jMenu2.setText("Agenda");
+
+        verEventos.setText("Ver eventos");
+        verEventos.setToolTipText("");
+        verEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verEventosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(verEventos);
+
+        addEvento.setText("Agregar Evento");
+        addEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addEventoMouseClicked(evt);
+            }
+        });
+        addEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEventoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(addEvento);
+
         jMenuBar1.add(jMenu2);
 
         jMenu1.setText("Contacto");
@@ -128,6 +153,23 @@ public class Inicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_addContactActionPerformed
 
+    private void verEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verEventosActionPerformed
+        dispose();
+        AgendaVer c = new AgendaVer();
+        c.setVisible(true);
+    }//GEN-LAST:event_verEventosActionPerformed
+
+    private void addEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEventoMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_addEventoMouseClicked
+
+    private void addEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEventoActionPerformed
+        dispose();
+        AgendaCrear c = new AgendaCrear();
+        c.setVisible(true);
+    }//GEN-LAST:event_addEventoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -165,11 +207,13 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addContact;
+    private javax.swing.JMenuItem addEvento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem verContactos;
+    private javax.swing.JMenuItem verEventos;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,12 +21,10 @@ public class Conexion {
     public Connection getConexion() {
        // String url = "jdbc:sqlserver://mssql.db.server\\\\mssql_instance;databaseName=AgendaPoo2";
        try{
-        String url = "jdbc:sqlserver://localhost:1433;" +
-                                   "Databasename=AgendaPoo2; " +
-                                   "user=sa; password=123456789asd; ";
+        String connectionString = "jdbc:sqlserver://localhost;databaseName=AgendaPoo2;user=sa;password=Prueba123";
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         System.out.println("Connected to Database");
-        return(DriverManager.getConnection(url));
+        return(DriverManager.getConnection(connectionString));
        } catch (Exception e) {
         System.err.format("Err State: %s\n%s", e.getMessage());
         System.out.println("Could not connect to database");

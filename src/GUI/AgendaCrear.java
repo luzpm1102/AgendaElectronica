@@ -7,18 +7,19 @@ package GUI;
 
 import static Conexion.Utils.insertarTabla;
 import clases.Contacto;
+import clases.Evento;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author LUZPM1102
  */
-public class Crear extends javax.swing.JFrame {
+public class AgendaCrear extends javax.swing.JFrame {
 
     /**
      * Creates new form Crear
      */
-    public Crear() {
+    public AgendaCrear() {
         initComponents();
     }
 
@@ -35,35 +36,29 @@ public class Crear extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
-        txtApellidos = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTel = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        txtLugar = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
         crearbutton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Crear Contacto");
+        jLabel1.setText("Crear Evento");
 
-        jLabel2.setText("Nombres: ");
+        jLabel2.setText("Lugar");
 
-        jLabel3.setText("Apellidos: ");
+        jLabel3.setText("Fecha");
 
-        jLabel4.setText("Direccion: ");
+        jLabel4.setText("Hora");
 
-        jLabel5.setText("Telefono: ");
-
-        jLabel6.setText("E-mail: ");
-
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+        txtHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
+                txtHoraActionPerformed(evt);
             }
         });
 
@@ -71,6 +66,11 @@ public class Crear extends javax.swing.JFrame {
         crearbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crearbuttonMouseClicked(evt);
+            }
+        });
+        crearbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearbuttonActionPerformed(evt);
             }
         });
 
@@ -86,25 +86,28 @@ public class Crear extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("YYYY-MM-DD");
+
+        jLabel8.setText("HH:MM:SS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDireccion)
-                    .addComponent(txtNombres)
-                    .addComponent(txtApellidos)
-                    .addComponent(txtTel)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(txtLugar)
+                        .addComponent(txtFecha)))
                 .addGap(48, 48, 48))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +117,9 @@ public class Crear extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addGap(160, 160, 160)
                         .addComponent(crearbutton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,79 +129,70 @@ public class Crear extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2))
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel3))
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel2)
+                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(crearbutton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+    private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
+    }//GEN-LAST:event_txtHoraActionPerformed
 
     private void crearbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearbuttonMouseClicked
 
-        String nombres = txtNombres.getText();
-        String apellidos = txtApellidos.getText();
-        String direccion = txtDireccion.getText();
-        String telefono = txtTel.getText();
-        String email = txtEmail.getText();
+        String lugar = txtLugar.getText();
+        String fecha = txtFecha.getText();
+        String hora = txtHora.getText();
         System.out.println("Create clicked");
-        if (!nombres.isEmpty()){
-            if (!telefono.isEmpty()){
+        if (!lugar.isEmpty()){
+            if (!fecha.isEmpty() && !hora.isEmpty()){
                 
-                Contacto c = new Contacto();
-                c.setNombres(nombres);
-                c.setApellidos(apellidos);
-                c.setDirección(direccion);
-                c.setMóvil(telefono);
-                c.setEmail(email);
-                String[] columnas = {"nombres", "apellidos", "direccion", "telefono", "email"};
-                String[] valores = {nombres, apellidos, direccion, telefono, email};
+                Evento c = new Evento();
+                c.setLugar(lugar);
+                c.setFecha(fecha);
+                c.setHora(hora);
+                String[] columnas = {"lugar", "fecha", "hora"};
+                String[] valores = {lugar, fecha, hora};
                 try {
-                    insertarTabla("Contactos", columnas, valores);
-                    JOptionPane.showMessageDialog(null, "Contacto " +c.getNombres() +" creado correctamente");
+                    insertarTabla("Agenda", columnas, valores);
+                    System.out.println(lugar);
+                    System.out.println(fecha);
+                    System.out.println(hora);
+                    JOptionPane.showMessageDialog(null, "Evento " +c.getLugar() +" creado correctamente");
                 } catch (Exception e){
                     System.out.println("Hubo un error Guardando");
                 }
                 
             }
             else{
-                JOptionPane.showMessageDialog(null, "El campo Telefono es requerido");
+                JOptionPane.showMessageDialog(null, "El campo fecha y hora es requerido");
             }
                    
         }else{
-            JOptionPane.showMessageDialog(null, "El campo nombre es requerido");
+            JOptionPane.showMessageDialog(null, "El campo Lugar es requerido");
         }
         
-        txtNombres.setText("");
-        txtApellidos.setText("");
-        txtDireccion.setText("");
-        txtTel.setText("");
-        txtEmail.setText("");
+        txtLugar.setText("");
+        txtFecha.setText("");
+        txtHora.setText("");
+
 
         // TODO add your handling code here:
     }//GEN-LAST:event_crearbuttonMouseClicked
@@ -218,6 +212,10 @@ public class Crear extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void crearbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,20 +233,21 @@ public class Crear extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Crear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Crear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Crear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Crear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgendaCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Crear().setVisible(true);
+                new AgendaCrear().setVisible(true);
             }
         });
     }
@@ -260,12 +259,10 @@ public class Crear extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtTel;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtLugar;
     // End of variables declaration//GEN-END:variables
 }
